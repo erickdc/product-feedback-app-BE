@@ -9,28 +9,22 @@ const router: express.Router = express.Router();
 
 // FEEDBACK
 // Show all feedback
-router.get(["/", "/feedbackproduct"], FeedbackController.getFeedback);
+router.get("/feedbackproduct", FeedbackController.getFeedback);
 // Show one feedback
-router.get(
-  ["/:id", "/feedbackproduct/:id"],
-  FeedbackController.getSingleFeedback
-);
+router.get("/feedbackproduct/:id", FeedbackController.getSingleFeedback);
 // Update a feedback
-router.put(["/:id", "/feedbackproduct/:id"], FeedbackController.updateFeedback);
+router.put("/feedbackproduct/:id", FeedbackController.updateFeedback);
 // Show comments within feedback
 router.get(
-  ["/:id/comments", "/feedbackproduct/:id/comments"],
+  "/feedbackproduct/:id/comments",
   FeedbackController.getSingleFeedbackComments
 );
 // Add new feedback to database
-router.post(["/", "/feedbackproduct"], FeedbackController.createFeedback);
+router.post("/feedbackproduct", FeedbackController.createFeedback);
 // Delete feedback from database
-router.delete(
-  ["/:id", "/feedbackproduct/:id"],
-  FeedbackController.deleteFeedback
-);
+router.delete("/feedbackproduct/:id", FeedbackController.deleteFeedback);
 // Upvote Feedback
-router.put([":/id", "/feedbackproduct/:id"], FeedbackController.upvoteFeedback);
+router.put("/feedbackproduct/:id", FeedbackController.upvoteFeedback);
 // USER
 // Create User
 router.post("/users", UserController.createUser);
@@ -40,7 +34,7 @@ router.post("/users/login", UserController.loginUser);
 
 // COMMENTS
 router.post(
-  ["/:id/comments", "/feedbackproduct/:id/comments"],
+  "/feedbackproduct/:id/comments",
   Auth.verifyToken,
   CommentController.createComment
 );
